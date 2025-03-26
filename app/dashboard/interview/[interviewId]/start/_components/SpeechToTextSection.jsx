@@ -30,11 +30,6 @@ function SpeechToTextSection({ userAnswer, setUserAnswer, mockInterviewQuestion,
             UpdateUserAnswer();
         }
 
-        // if (userAnswer?.length < 10) {
-        //     setLoading(false);
-        //     toast("Error while saving your answer. Please record again!")
-        //     return;
-        // }
     },[userAnswer, isRecording])
 
     const StartStopRecording = async () => {
@@ -62,7 +57,7 @@ function SpeechToTextSection({ userAnswer, setUserAnswer, mockInterviewQuestion,
             mockIdRef: interviewData?.mockId,
             question: mockInterviewQuestion[activeQuestionIndex]?.question,
             correctAns: mockInterviewQuestion[activeQuestionIndex]?.answer,
-            userAnswer: userAnswer,
+            userAns: userAnswer,
             feedback: JsonFeedbackResp?.feedback,
             rating: JsonFeedbackResp?.rating,
             userEmail: user.primaryEmailAddress.emailAddress,
@@ -75,6 +70,7 @@ function SpeechToTextSection({ userAnswer, setUserAnswer, mockInterviewQuestion,
             setUserAnswer('');
             setResults([]);
             setLoading(false);
+            // console.log(userAnswer);
         } else {
             toast.error('Failed to save answer');
             setLoading(false);
